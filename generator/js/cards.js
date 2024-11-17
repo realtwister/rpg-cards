@@ -458,11 +458,18 @@ var card_element_generators = {
 // Card generating functions
 // ============================================================================
 
+function deepcopy(res){
+    return JSON.parse(JSON.stringify(res));
+}
+
+
 function card_generate_contents(contents, card_data, options) {
     var result = "";
    
     var html = contents.map(function (value) {
+        console.log(value);
         var parts = card_data_split_params(value);
+        console.log(parts);
         var element_name = parts[0];
         var element_params = parts.splice(1);
         var element_generator = card_element_generators[element_name];
@@ -553,6 +560,11 @@ function add_size_to_style(style, width, height) {
 }
 
 function card_generate_front(data, options) {
+    if(data.contents.includes("---")){
+        data = JSON.parse(JSON.stringify(data));
+        data.title = data.title + " <sub>(Front)</sub>";
+        data.contents = data.contents.slice(0, data.contents.indexOf("---"))
+    }
     var color = card_data_color_front(data, options);
     var style_color = card_generate_color_style(color, options);
     var card_style = add_size_to_style(style_color, options.card_width, options.card_height);
@@ -570,6 +582,14 @@ function card_generate_front(data, options) {
 }
 
 function card_generate_back(data, options) {
+    console.log(data.contents)
+    if(data.contents.includes("---")){
+        data_copy = ingredientsListDeepCopy = deepcopy(data);
+        data_copy.contents = data_copy.contents.slice(data_copy.contents.indexOf("---")+1)
+        data_copy.title = data_copy.title+ " <sub>(Back)</sub>";
+        return card_generate_front(data_copy, options);
+        console.log("needs to parse front for back")
+    }
     var color = card_data_color_back(data, options);
     var style_color = card_generate_color_style(color, options);
 

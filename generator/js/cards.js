@@ -29,7 +29,8 @@ function card_default_data() {
         count: 1,
         title: "New card",
         contents: [],
-        tags: []
+        tags: [],
+        shorten_tag: false
     };
 }
 
@@ -37,6 +38,7 @@ function card_init(card) {
     card.title = card.title || "";
     card.contents = card.contents || [];
     card.tags = card.tags || [];
+    card.shorten_tag = card.shorten_tag || false;
 }
 
 function card_has_tag(card, tag) {
@@ -340,7 +342,7 @@ function card_element_p2e_activity(params, card_data, options) {
         activity_icon = 'icon-p2e-2-actions';
     } else if (params[1] == '3') {
         activity_icon = 'icon-p2e-3-actions';
-    } else if (params[1] == 'R') {
+    } else if (params[1] == 'R') {attr
         activity_icon = 'icon-p2e-reaction';
     } 
 
@@ -562,7 +564,8 @@ function add_size_to_style(style, width, height) {
 function card_generate_front(data, options) {
     if(data.contents.includes("---")){
         data = JSON.parse(JSON.stringify(data));
-        data.title = data.title + " <sub>(Front)</sub>";
+        sub = data.shorten_tag? "(F)":"(Front)";
+        data.title = data.title + " "+sub;
         data.contents = data.contents.slice(0, data.contents.indexOf("---"))
     }
     var color = card_data_color_front(data, options);
@@ -586,9 +589,9 @@ function card_generate_back(data, options) {
     if(data.contents.includes("---")){
         data_copy = ingredientsListDeepCopy = deepcopy(data);
         data_copy.contents = data_copy.contents.slice(data_copy.contents.indexOf("---")+1)
-        data_copy.title = data_copy.title+ " <sub>(Back)</sub>";
+        sub = data.shorten_tag? "(B)":"(Back)";
+        data_copy.title = data_copy.title+ " "+sub;
         return card_generate_front(data_copy, options);
-        console.log("needs to parse front for back")
     }
     var color = card_data_color_back(data, options);
     var style_color = card_generate_color_style(color, options);

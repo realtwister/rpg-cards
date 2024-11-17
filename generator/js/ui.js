@@ -178,6 +178,7 @@ function ui_update_selected_card() {
     var card = ui_selected_card();
     if (card) {
         $("#card-title").val(card.title);
+        $("#card-shorten-tag").val(card.shorten_tag);
         $("#card-title-size").val(card.title_size);
         $("#card-font-size").val(card.card_font_size);
         $("#card-count").val(card.count);
@@ -189,6 +190,7 @@ function ui_update_selected_card() {
         $("#card-color").val(card.color).change();
     } else {
         $("#card-title").val("");
+        $("#card-shorten-tag").val("");
         $("#card-title-size").val("");
         $("#card-font-size").val("");
         $("#card-count").val(1);
@@ -409,7 +411,15 @@ function ui_change_card_title() {
 function ui_change_card_property() {
     var property = $(this).attr("data-property");
     var value = $(this).val();
+    console.log($(this))
+    if ($(this).attr("type")=="checkbox"){
+        console.log("Detected checkbox")
+        var value = $(this).is(":checked");
+    }
     var card = ui_selected_card();
+
+    console.log(property)
+    console.log(value)
     if (card) {
         card[property] = value;
         ui_render_selected_card();
@@ -672,6 +682,7 @@ $(document).ready(function () {
     $("#selected-card").change(ui_update_selected_card);
 
     $("#card-title").change(ui_change_card_title);
+    $("#card-shorten-tag").change(ui_change_card_property);
     $("#card-title-size").change(ui_change_card_property);
     $("#card-font-size").change(ui_change_card_property);
     $("#card-icon").change(ui_change_card_property);

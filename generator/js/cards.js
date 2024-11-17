@@ -533,7 +533,7 @@ function card_generate_contents(contents, card_data, options) {
 
     });
 
-    result += '<div class="card-content-container">';
+    result += '<div class="card-content-container '+card_size_class(card_data,options)+'">';
     result += html;
     result += '</div>';
     return result;

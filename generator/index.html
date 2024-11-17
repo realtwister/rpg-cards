@@ -123,7 +123,8 @@
                                                 id="button-filter">Map/Filter</button>
                                         </div>
                                         <div class="col-sm-6">
-
+                                            <button type="button" class="btn btn-primary btn-block"
+                                                id="button-overview">Overview</button>
                                         </div>
                                     </div>
                                     <!--<span class="help-block">Generated cards open in a new tab or window.</span>-->
@@ -181,6 +182,7 @@
                                         <label for="card-size" class="col-sm-4 control-label">Card Size</label>
                                         <div class="col-sm-8">
                                             <select class="form-control" id="card-size" data-option="card_size">
+                                                <option value="55mm,91mm">Jente special - 55mm &times; 91mm</option>
                                                 <option value="63mm,88mm">Standard, Poker EU, MtG - 63mm &times; 88mm</option>
                                                 <option value="2.5in,3.5in">Standard, Poker US - 2 1/2” &times; 3 1/2”</option>
                                                 <option value="2.25in,3.5in">Standard, American - 2 1/4” &times; 3 1/2”</option>
@@ -393,9 +395,9 @@
                                                 <option value="16">16pt</option>
                                                 <option value="15">15pt</option>
                                                 <option value="14">14pt</option>
-                                                <option value="13" selected>13pt (initial)</option>
+                                                <option value="13">13pt (initial)</option>
                                                 <option value="12">12pt</option>
-                                                <option value="11">11pt</option>
+                                                <option value="11" selected>11pt</option>
                                                 <option value="10">10pt</option>
                                             </select>
                                         </div>
@@ -408,12 +410,12 @@
                                         <label for="default-card-font-size" class="col-sm-4 control-label">Text font size</label>
                                         <div class="col-sm-6">
                                             <select class="form-control" id="default-card-font-size">
-                                                <option value="12" selected>12px (initial)</option>
+                                                <option value="12">12px (initial)</option>
                                                 <option value="11">11px</option>
                                                 <option value="inherit">10.66px (inherit: 8pt)</option>
                                                 <option value="10">10px</option>
                                                 <option value="9">9px</option>
-                                                <option value="smaller">8.88px (smaller)</option>
+                                                <option value="smaller" selected>8.88px (smaller)</option>
                                                 <option value="8">8px</option>
                                             </select>
                                         </div>
@@ -433,143 +435,145 @@
 
 
             </div>
-            <div class="col-md-12 col-lg-5">
-                <!--<h3>Card</h3>-->
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="selected-card" class="col-sm-2 control-label">Deck</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static" id="total_card_count">Deck contains 100 cards.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="selected-card" class="col-sm-2 control-label">Card</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="selected-card"></select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label"></label>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-danger btn-block" id="button-delete-card">Delete
-                                card</button>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-primary btn-block" id="button-add-card">Add new
-                                card</button>
-                        </div>
-                        <div class="col-sm-3">
-                            <button type="button" class="btn btn-primary btn-block" id="button-duplicate-card">Duplicate
-                                card</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-title" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-7">
-                            <input type="text" id="card-title" class="form-control" placeholder="Title">
-                        </div>
-                        <div class="col=sm-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="card-shorten-tag" data-property="shorten_tag">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                  Shorten Front/Back
-                                </label>
-                              </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-title-size" class="col-sm-2 control-label">Title font size</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="card-title-size" data-property="title_size">
-                                <option value="16">16pt</option>
-                                <option value="15">15pt</option>
-                                <option value="14">14pt</option>
-                                <option value="13">13pt (initial)</option>
-                                <option value="12">12pt</option>
-                                <option value="11">11pt</option>
-                                <option value="10">10pt</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-font-size" class="col-sm-2 control-label">Text size</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="card-font-size" data-property="card_font_size">
-                                <option value="12">12px (initial)</option>
-                                <option value="11">11px</option>
-                                <option value="inherit">10.66px (inherit: 8pt)</option>
-                                <option value="10">10px</option>
-                                <option value="9">9px</option>
-                                <option value="smaller">8.88px (smaller)</option>
-                                <option value="8">8px</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-count" class="col-sm-2 control-label">Count</label>
-                        <div class="col-sm-10">
-                            <input type="number" id="card-count" class="form-control" placeholder="Count"
-                                data-property="count" value="1">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-tags" class="col-sm-2 control-label">Tags</label>
-                        <div class="col-sm-10">
-                            <input type="text" id="card-tags" class="form-control" placeholder="Tags, comma separated">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-icon" class="col-sm-2 control-label">Icons</label>
-                        <div class="col-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default icon-select-button" type="button">Search</button>
-                                </span>
-                                <input type="text" id="card-icon" class="form-control icon-list"
-                                    placeholder="Card icons, space separated" data-property="icon">
+            <div class="col-md-12 col-lg-9">
+                <div class="col-md-12 col-lg-7">
+                    <!--<h3>Card</h3>-->
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="selected-card" class="col-sm-2 control-label">Deck</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static" id="total_card_count">Deck contains 100 cards.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-icon-back" class="col-sm-2 control-label">Back icon</label>
-                        <div class="col-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default icon-select-button" type="button">Search</button>
-                                </span>
-                                <input type="text" id="card-icon-back" class="form-control icon-list"
-                                    placeholder="Same as front" data-property="icon_back">
+                        <div class="form-group">
+                            <label for="selected-card" class="col-sm-2 control-label">Card</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="selected-card"></select>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-color" class="col-sm-2 control-label">Color</label>
-                        <div class="col-sm-10">
-                            <div class="input-group">
-                                <select id="card_color_selector" class="colorselector-data"></select>
-                                <input type="text" id="card-color" class="form-control" placeholder="Default color"
-                                    data-property="color">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-danger btn-block" id="button-delete-card">Delete
+                                    card</button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-primary btn-block" id="button-add-card">Add new
+                                    card</button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-primary btn-block" id="button-duplicate-card">Duplicate
+                                    card</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-background" class="col-sm-2 control-label">Background</label>
-                        <div class="col-sm-10">
-                            <input type="text" id="card-background" class="form-control"
-                                placeholder="Background image URL" data-property="background_image">
+                        <div class="form-group">
+                            <label for="card-title" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-7">
+                                <input type="text" id="card-title" class="form-control" placeholder="Title">
+                            </div>
+                            <div class="col=sm-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="card-shorten-tag" data-property="shorten_tag">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    Shorten Front/Back
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="card-contents" class="col-sm-2 control-label">Contents</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="14" id="card-contents"></textarea>
+                        <div class="form-group">
+                            <label for="card-title-size" class="col-sm-2 control-label">Title font size</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="card-title-size" data-property="title_size">
+                                    <option value="16">16pt</option>
+                                    <option value="15">15pt</option>
+                                    <option value="14">14pt</option>
+                                    <option value="13">13pt (initial)</option>
+                                    <option value="12">12pt</option>
+                                    <option value="11">11pt</option>
+                                    <option value="10">10pt</option>
+                                </select>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <label for="card-font-size" class="col-sm-2 control-label">Text size</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="card-font-size" data-property="card_font_size">
+                                    <option value="12">12px (initial)</option>
+                                    <option value="11">11px</option>
+                                    <option value="inherit">10.66px (inherit: 8pt)</option>
+                                    <option value="10">10px</option>
+                                    <option value="9">9px</option>
+                                    <option value="smaller">8.88px (smaller)</option>
+                                    <option value="8">8px</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-count" class="col-sm-2 control-label">Count</label>
+                            <div class="col-sm-10">
+                                <input type="number" id="card-count" class="form-control" placeholder="Count"
+                                    data-property="count" value="1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-tags" class="col-sm-2 control-label">Tags</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="card-tags" class="form-control" placeholder="Tags, comma separated">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-icon" class="col-sm-2 control-label">Icons</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default icon-select-button" type="button">Search</button>
+                                    </span>
+                                    <input type="text" id="card-icon" class="form-control icon-list"
+                                        placeholder="Card icons, space separated" data-property="icon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-icon-back" class="col-sm-2 control-label">Back icon</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default icon-select-button" type="button">Search</button>
+                                    </span>
+                                    <input type="text" id="card-icon-back" class="form-control icon-list"
+                                        placeholder="Same as front" data-property="icon_back">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-color" class="col-sm-2 control-label">Color</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <select id="card_color_selector" class="colorselector-data"></select>
+                                    <input type="text" id="card-color" class="form-control" placeholder="Default color"
+                                        data-property="color">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-background" class="col-sm-2 control-label">Background</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="card-background" class="form-control"
+                                    placeholder="Background image URL" data-property="background_image">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-contents" class="col-sm-2 control-label">Contents</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="14" id="card-contents"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12 col-lg-5">
+                    <!--<h3>Preview</h3>-->
+                    <div id="preview-container" class="preview-container">
                     </div>
-                </form>
-            </div>
-            <div class="col-md-12 col-lg-4">
-                <!--<h3>Preview</h3>-->
-                <div id="preview-container" class="preview-container">
                 </div>
             </div>
         </div>
@@ -712,6 +716,59 @@ if (card_has_tag(card, "creature")) {
     return false;
 }
                     </textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="filter-execute">Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal (Overview)-->
+    <div class="modal" id="overview-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Overview</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Enter code below that will be executed for each card in the deck.
+                        Return false to remove the current card from the deck.
+                    </p>
+                    <table id="overview-card-table" class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Src</th>
+                            <th scope="col">Handle</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" id="filter-execute">Filter</button>

@@ -17,6 +17,10 @@ body {
 .page-zoom-preview {
   margin: 0 auto;
 }
+@page {
+  size: A4;
+  margin: 0
+}
 
 @media print {
   .page-preview {
@@ -25,6 +29,8 @@ body {
     border: 0;
     box-shadow: none;
     background-color: white;
+    page-break-inside:avoid;
+    page-break-after: always;
   }
   .page-zoom-preview {
     margin: 0;
@@ -35,6 +41,9 @@ body {
     border: 0;
     box-shadow: none;
     /* Set the background to gray to visualize the page size in the print preview */
-    background-color: gray;
+    background-color: white;
   }
+  .card {
+    page-break-inside: avoid;
+}
 }
